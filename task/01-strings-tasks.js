@@ -115,7 +115,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-    throw new Error('Not implemented');
+    return value.repeat(count);
 }
 
 /**
@@ -131,7 +131,7 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-    throw new Error('Not implemented');
+    return str.replace(value,'');
 }
 
 /**
@@ -146,7 +146,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-    throw new Error('Not implemented');
+    return str.slice(1,-1);
 }
 
 
@@ -161,7 +161,7 @@ function unbracketTag(str) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-    throw new Error('Not implemented');
+    return str.toUpperCase();
 }
 
 /**
@@ -175,7 +175,7 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-    throw new Error('Not implemented');
+    return str.split(';');
 }
 
 /**
@@ -202,9 +202,13 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-    throw new Error('Not implemented');
+    var str = '┌'+ '─'.repeat(width-2) + '┐'+'\n' ;
+    for (var i = 1; i< height-1; i++){
+        str = str + "│" + ' '.repeat(width-2)+ "│"+'\n';
+    }
+    str = str +  '└'+ '─'.repeat(width-2) + '┘'+'\n' ;
+    return str;
 }
-
 
 /**
  * Encode specified string with ROT13 cipher
@@ -221,8 +225,16 @@ function getRectangleString(width, height) {
  *   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz' => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(str) {
-    throw new Error('Not implemented');
+function encodeToRot13(s) {
+    var c = 0;
+    var k = 0;
+    return (s ? s : this).split('').map(function(str)
+     {
+        if (!str.match(/[A-Za-z]/)) return str;
+        c = Math.floor(str.charCodeAt(0) / 97);
+        k = (str.toLowerCase().charCodeAt(0) - 83) % 26 || 26;
+        return String.fromCharCode(k + ((c == 0) ? 64 : 96));
+     }).join('');
 }
 
 /**
@@ -239,7 +251,8 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    throw new Error('Not implemented');
+    if(typeof value == 'string' || value instanceof String) return true;
+    else return false;
 }
 
 
@@ -268,7 +281,11 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    throw new Error('Not implemented');
+    var arr = ['A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
+     'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
+     'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
+      'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠'];
+      return arr.indexOf(value);
 }
 
 
