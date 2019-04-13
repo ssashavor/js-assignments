@@ -23,7 +23,7 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
-   throw new Error('Not implemented');
+   return arr.indexOf(value);
 }
 
 /**
@@ -70,7 +70,10 @@ function doubleArray(arr) {
  *    [] => [] 
  */
 function getArrayOfPositives(arr) {
-   throw new Error('Not implemented');
+   var positiveArr = arr.filter(function(number) {
+      return number > 0;
+    });
+    return positiveArr;
 }
 
 /**
@@ -85,7 +88,10 @@ function getArrayOfPositives(arr) {
  *    [ 'cat, 'dog', 'raccon' ] => [ 'cat', 'dog', 'racoon' ]
  */
 function getArrayOfStrings(arr) {
-   throw new Error('Not implemented');
+   var count = arr.filter(function(number) {
+      return typeof number == 'string'
+    });
+    return count;
 }
 
 /**
@@ -102,7 +108,10 @@ function getArrayOfStrings(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-   throw new Error('Not implemented');
+   var count = arr.filter(function(number) {
+      return number !=false && number != 0 && number !=null && !(number !== number) && number !='' && number !='underfined' ;
+    });
+    return count;
 }
 
 /**
@@ -116,7 +125,10 @@ function removeFalsyValues(arr) {
  *    [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ]  => [ 'A', 'B', 'C', 'D', 'E', 'F', 'G' ]
  */
 function getUpperCaseStrings(arr) {
-   throw new Error('Not implemented');
+   var ARR = arr.map(function(name) {
+      return name.toUpperCase();
+    });
+    return ARR;
 }
 
 
@@ -131,7 +143,10 @@ function getUpperCaseStrings(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-   throw new Error('Not implemented');
+   var ARR = arr.map(function(name) {
+      return name.length;
+    });
+    return ARR;
 }
 
 /**
@@ -160,7 +175,7 @@ function insertItem(arr, item, index) {
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'a', 'b', 'c' ]
  */
 function getHead(arr, n) {
-   throw new Error('Not implemented');
+   return arr.slice(0,n);
 }
 
 
@@ -175,7 +190,7 @@ function getHead(arr, n) {
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'b', 'c', 'd' ]
  */
 function getTail(arr, n) {
-   throw new Error('Not implemented');
+   return arr.splice(-n,n+1)
 }
 
 
@@ -215,7 +230,10 @@ function toCsvText(arr) {
  *   [ 10, 100, -1 ]      => [ 100, 10000, 1 ]
  */
 function toArrayOfSquares(arr) {
-   throw new Error('Not implemented');
+   var ARR = arr.map(function(name) {
+      return name*name;
+    });
+    return ARR;
 }
 
 
@@ -234,7 +252,16 @@ function toArrayOfSquares(arr) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
 function getMovingSum(arr) {
-   throw new Error('Not implemented');
+   var result = [];
+  if (!arr.length) return result;
+
+  var totalSum = arr.reduce(function(sum, item) {
+    result.push(sum);
+    return sum + item;
+  });
+  result.push(totalSum);
+
+  return result;
 }
 
 /**
@@ -250,6 +277,10 @@ function getMovingSum(arr) {
  */
 function getSecondItems(arr) {
    throw new Error('Not implemented');
+   // var positiveArr = arr.filter(function(number) {
+   //    return number % 2 == 0;
+   //  });
+   //  return positiveArr;
 }
 
 
@@ -337,7 +368,11 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-   throw new Error('Not implemented');
+   var result = arr.reduce(function(sum, current) {
+      return sum + current;
+    }, 0);
+    
+   return result ;
 }
  
 /** 
@@ -353,7 +388,10 @@ function getItemsSum(arr) {
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
 function getFalsyValuesCount(arr) {
-   throw new Error('Not implemented');
+   var count = arr.filter(function(number) {
+      return number !=false && number != 0 && number !=null && !(number !== number) && number !='' && number !='underfined' ;
+    });
+    return arr.length - count.length;
 }
 
 /**
@@ -386,7 +424,7 @@ function findAllOccurences(arr, item) {
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
 function toStringList(arr) {
-   throw new Error('Not implemented');
+   return arr.join(',');
 }
 
 
