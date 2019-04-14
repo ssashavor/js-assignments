@@ -308,7 +308,6 @@ function isCreditCardNumber(ccn) {
     throw new Error('Not implemented');
 }
 
-
 /**
  * Returns the digital root of integer:
  *   step1 : find sum of all digits
