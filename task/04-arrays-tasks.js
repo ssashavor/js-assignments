@@ -349,7 +349,10 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-   throw new Error('Not implemented');
+   var positiveArr = arr.filter(function(number) {
+      return number > 0 && typeof number != 'string';
+    });
+    return positiveArr.length;
 }
  
 /** 
@@ -512,7 +515,16 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-   throw new Error('Not implemented');
+   const arr = Array(end-start+1).fill(start);
+
+    arr.reduce((sum, current, index) => {
+        if (index > 0) {
+            sum = arr[index - 1] + 1;
+            arr[index] = sum;
+        }
+    }, 1);
+
+    return arr;
 }
 
 /**
@@ -527,7 +539,7 @@ function getIntervalArray(start, end) {
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
-   throw new Error('Not implemented');
+   return [...new Set(arr)];
 }
 
 /**

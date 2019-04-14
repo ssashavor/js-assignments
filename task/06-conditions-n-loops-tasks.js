@@ -323,8 +323,18 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-    throw new Error('Not implemented');
-}
+        do{
+          var result = num.toString().split('');
+          var sum = 0;
+            for (var i = 0; i <=result.length-1 ; i++ ) {
+                sum += +result[i];
+            }
+            num = sum;
+          }
+          while (sum > 9);
+          return sum;
+          
+        }
 
 
 /**
