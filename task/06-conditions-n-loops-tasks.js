@@ -30,7 +30,15 @@
  *
  */
 function getFizzBuzz(num) {
-    throw new Error('Not implemented');
+    if (num % 3 === 0 && num % 5 === 0) {
+        return 'FizzBuzz';
+    } else if (num % 3 === 0) {
+        return 'Fizz';
+    } else if (num % 5 === 0) {
+        return 'Buzz'
+    } else {
+        return num;
+    }
 }
 
 
@@ -46,7 +54,11 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-    throw new Error('Not implemented');
+    if (n === 0) return 1;
+
+    if (n === 1) return 1;
+
+    return n * getFactorial(n - 1);
 }
 
 
@@ -63,7 +75,11 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    throw new Error('Not implemented');
+    var sum = 0;
+    for (var i = n1; i <= n2; i++ ) {
+        sum += i;
+    }
+    return sum;
 }
 
 
@@ -82,7 +98,16 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a,b,c) {
-    throw new Error('Not implemented');
+
+    if (
+        Math.pow(a, 2) + Math.pow(b, 2) < Math.pow(c, 2) ||
+        Math.pow(b, 2) + Math.pow(c, 2)  < Math.pow(a, 2) ||
+        Math.pow(a, 2) + Math.pow(c, 2) < Math.pow(b, 2)
+    ) {
+        return false;
+    }
+    
+    return true;
 }
 
 
@@ -166,7 +191,19 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-    throw new Error('Not implemented');
+     var  char = 0;
+      var charCount = {};
+  for(var i =0; i<str.length; i++){
+    char = str[i];
+    if(charCount[char]){
+      charCount[char]++;
+    }
+    else
+      charCount[char] = 1;
+  }
+  for (var j in charCount){
+    if (charCount[j]==1) return j;
+  }
 }
 
 
@@ -192,7 +229,22 @@ function findFirstSingleChar(str) {
  *
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-    throw new Error('Not implemented');
+    var str = '';
+    if (a>b ) {
+        if (isStartIncluded === true) {str += '[' } else {str += '('}
+        str +=b;
+        str +=', ';
+        str+=a;
+        if (isEndIncluded === true) {str += ']' } else {str += ')'}
+    }
+    else {
+        if (isStartIncluded ==true) {str += '[' } else {str += '('} 
+        str +=a;
+        str +=', ';
+        str+=b;
+        if (isEndIncluded ==true) {str += ']' } else {str += ')'}
+    }
+    return str;
 }
 
 
@@ -209,7 +261,9 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-    throw new Error('Not implemented');
+    if(!str || str.length <2) return str;
+  
+    return str.split('').reverse().join('');
 }
 
 
@@ -226,7 +280,7 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    throw new Error('Not implemented');
+  return num.toString().split('').reverse().join('');
 }
 
 

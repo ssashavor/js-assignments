@@ -38,7 +38,16 @@ function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 function generateOdds(len) {
-   throw new Error('Not implemented');
+   const arr = Array(len).fill(1);
+
+    arr.reduce((sum, current, index) => {
+        if (index > 0) {
+            sum = arr[index - 1] + 2;
+            arr[index] = sum;
+        }
+    }, 1);
+
+    return arr;
 }
 
 
@@ -54,7 +63,7 @@ function generateOdds(len) {
  *    [] => [] 
  */
 function doubleArray(arr) {
-   throw new Error('Not implemented');
+   return arr.concat(arr)
 }
 
 
@@ -161,7 +170,7 @@ function getStringsLength(arr) {
  *    [ 1, 'b', 'c'], 0, 'x'  => [ 'x', 1, 'b', 'c' ]
  */
 function insertItem(arr, item, index) {
-   throw new Error('Not implemented');
+   return arr.splice(index, 0, item);
 }
 
 /**
@@ -276,11 +285,13 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-   throw new Error('Not implemented');
-   // var positiveArr = arr.filter(function(number) {
-   //    return number % 2 == 0;
-   //  });
-   //  return positiveArr;
+   const result = [];
+  
+    arr.map((item, index) => {
+        if (index % 2 !== 0) result.push(item)
+    });
+  
+    return result;
 }
 
 
@@ -317,7 +328,10 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
 function get3TopItems(arr) {
-   throw new Error('Not implemented');
+   if (arr.length < 3) {
+      return arr.reverse();
+  }
+  return arr.slice(arr.length - 3).reverse();
 }
  
  
@@ -409,7 +423,13 @@ function getFalsyValuesCount(arr) {
  *    [ true, 0, 1, 'true' ], true => 1
  */
 function findAllOccurences(arr, item) {
-   throw new Error('Not implemented');
+   return arr.reduce((counter, current) => {
+       if (current === item) {
+           counter++;
+       }
+
+       return counter;
+   }, 0) 
 }
 
 /**
@@ -597,7 +617,19 @@ function getElementByIndexes(arr, indexes) {
  * 
  */
 function swapHeadAndTail(arr) {
-    throw new Error('Not implemented');
+   var start,end,center;
+   if( arr.length % 2 == 0){
+      start = arr.slice(arr.length/2);
+      end = arr.slice(0, arr.length/2);
+      return  start.concat(end);
+    }
+    else {
+      center = Math.floor(arr.length/2);
+      start = arr.slice(center+1);
+      end = arr.slice(0, center);
+      start.push(arr[center]);
+      return start.concat(end);
+    }
 }
 
 
