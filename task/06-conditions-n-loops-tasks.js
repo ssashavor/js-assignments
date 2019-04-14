@@ -359,7 +359,23 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true 
  */
 function isBracketsBalanced(str) {
-    throw new Error('Not implemented');
+    var bracketsConfig = ['[]','()','{}','<>'];
+    var t=str.split('');
+for (var m=0; m<t.length; m++){
+  for (var z=0; z<t.length; z++){
+    for(var k=0; k<t.length; k++){
+      for(var i=0; i< t.length; i++){
+        for (var j=0;j< bracketsConfig.length; j++){
+          if (t[i]==bracketsConfig[j][0] && t[i+1]==bracketsConfig[j][1]){
+            t.splice(i, 2);
+          }
+        }
+      }
+    }
+  }
+}
+if(t.length==0) {return true;}
+else {return false;}
 }
 
 
@@ -419,7 +435,13 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-    throw new Error('Not implemented');
+    var alfa=['0','1','2','3','4','5','6','7','8','9'];
+    var rez = "";
+	while(num > 0){
+		rez += alfa.slice(0,n)[num%n];
+		num = Math.floor(num/n);
+	}
+	return rez.split('').reverse().join('');
 }
 
 
